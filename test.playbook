@@ -1,0 +1,11 @@
+---
+- name: Execute command to print hostname, user, and hostname IP
+  hosts: localhost
+  tasks:
+    - name: Run echo command
+      shell: echo "$(hostname -i)-$(whoami)-$(hostname)"
+      register: command_output
+
+    - name: Print command output
+      debug:
+        msg: "{{ command_output.stdout }}"
